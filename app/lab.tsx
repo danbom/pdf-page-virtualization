@@ -113,7 +113,10 @@ export default function Lab() {
   const jump = () => {
     const el = document.querySelector(`[data-page="${JUMP_TO}"]`)
     if (!el) return
-    if (seen.current.has(JUMP_TO)) setTimes((t) => ({ ...t, jump: 0 }))
+    // 이미 다 그려진 캔버스가 있으면 0ms, 없으면 다 그릴 때까지 잽니다.
+    // 보이는 쪽만 모드에서는 한 번 그렸던 쪽도 멀어지면 언마운트돼서 다시 그려요.
+    const canvas = el.querySelector('canvas')
+    if (canvas && canvas.width > 0 && canvas.style.visibility !== 'hidden') setTimes((t) => ({ ...t, jump: 0 }))
     else {
       setTimes((t) => ({ ...t, jump: undefined }))
       jumpStart.current = performance.now()
@@ -148,7 +151,7 @@ export default function Lab() {
         <table>
           <tbody>
             <tr>
-              <th>그려 둔 캔버스</th>
+              <th>살아 있는 캔버스</th>
               <td>
                 {stats?.canvases ?? '-'}장 · {stats?.canvasMB ?? '-'}MB
               </td>
