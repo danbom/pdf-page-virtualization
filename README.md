@@ -60,7 +60,7 @@ npm run versions             # next / react-pdf / pdfjs-dist 버전 확인
   그리기 effect의 의존성에서 콜백은 일부러 뺐어요
 - react-pdf 10.5.0 `Page/TextLayer` — 텍스트 레이어를 그리는 `useLayoutEffect`의 의존성에 `onRenderTextLayerSuccess`를 감싼 콜백과 `customTextRenderer`가 들어 있어요.
   이 값이 바뀌면 `layer.innerHTML = ''`로 비우고 처음부터 다시 그립니다
-- pdf.js 기본 뷰어(pdfjs-dist 5.7.284 `web/pdf_viewer`)는 그린 쪽을 max(10, 2 × 보이는 쪽 수 + 1)개까지만 두고 가장 오래된 것부터 지워요
+- pdf.js 기본 뷰어(pdfjs-dist 5.7.284 `web/pdf_viewer`)는 그린 쪽을 max(10, 2 × 보이는 쪽 수 + 1)개까지만 두고 가장 오래전에 본 쪽부터 지워요
 
 ## 테스트 PDF 다시 만들기
 
@@ -68,5 +68,5 @@ npm run versions             # next / react-pdf / pdfjs-dist 버전 확인
 python3 scripts/make-long-pdf.py public 300   # public/long.pdf 를 다시 씁니다 (reportlab 필요)
 ```
 
-Letter 크기(612×792pt) 300쪽이고, 쪽마다 제목 한 줄과 본문 40줄이 있어서 텍스트 span이 쪽당 42개, 모두 12,600개예요.
+Letter 크기(612×792pt) 300쪽이고, 쪽마다 쪽 번호, 제목 한 줄, 본문 40줄이 있어서 텍스트 span이 쪽당 42개, 모두 12,600개예요.
 쪽 번호를 오른쪽 위에 크게 찍어 둬서 스크롤 위치를 알아보기 쉬워요.
