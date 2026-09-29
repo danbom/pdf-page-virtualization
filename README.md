@@ -3,6 +3,11 @@
 300쪽 PDF를 react-pdf로 띄울 때, 모든 쪽을 한꺼번에 그리는 것과 화면 근처의 쪽만 그리는 것을 비교하는 최소 예제예요.
 블로그 글 [「300쪽을 다 그려도 첫 쪽은 빨리 뜬다」](https://danbom425.tistory.com/entry/pdf-page-virtualization)(브라우저에서 문서 다루기 #4)의 재현 저장소입니다.
 
+**▶ 라이브 데모: https://pdf-page-virtualization.vercel.app**
+
+[![screenshot](docs/screenshot.png)](https://pdf-page-virtualization.vercel.app)
+
+
 ## 결론 먼저
 
 headless Chromium 140, 창 1280×900, devicePixelRatio 2에서 2~5번 잰 범위예요.
